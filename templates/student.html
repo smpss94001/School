@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock head %}
+
+{% block title %}Student{% endblock title%}
+{% block content%}
+<div class="btn_div">
+  <h1 class="system_title left">吉得堡國中升學補習班</h1>
+</div>
+<div class="btn_div">
+  <h2 class="system_title left">學生資訊</h2>
+</div>
+
+<div class="image"></div>
+  <img class="index_pic" src="{{ url_for('static', filename='./image/student.png') }}"></a>
+</div>
+
+
+<div class="system_table">
+  <form method="post" action={{ url_for('student') }}>
+    <table cellpadding="10" border='3'>
+      <tr>
+        <th>學生學號</th>
+        <th>學生姓名</th>
+        <th>就讀國中</th>
+        <th>錄取高中</th>
+        <th>會考總分</th>
+        <th>註冊日期</th>
+        <th>註冊分部</th>
+      </tr>
+      {% for student in student_data %}
+      <tr>
+        <td> {{ student.學生學號 }}</td>
+        <td> {{ student.學生姓名 }}</td>
+        <td> {{ student.就讀國中 }}</td>
+        <td> {{ student.錄取高中 }}</td>
+        <td> {{ student.會考總分 }}</td>
+        <td> {{ student.註冊日期 }}</td>
+        <td> {{ student.註冊分部 }}</td>
+        <td><button type="submit" value="{{student.學生學號}}" name="student_edit">修改
+        <td><button type="submit" value="{{student.學生姓名}}" name="student_delete"  onclick="return (confirm('你確定要刪除 \'{{ student.學生姓名 }}\' 嗎？'))" >刪除</button></td>
+        
+        
+        <!-- 傳遞商品編號 -->
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="system_table">
+      <a href={{ url_for('student_add')}}><button value="new" name="new" type="button"> 新增資料</button></a>
+     
+      </div>
+    </div>
+  </form>
+
+</div>
+<div class="btn_div">
+<button><a href="{{ url_for('selection') }}">回主頁</button> 
+</div>
+{% endblock content%}

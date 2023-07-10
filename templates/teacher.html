@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock head %}
+
+{% block title %}Teacher{% endblock title%}
+
+{% block content%}
+<div class="btn_div">
+  <h1 class="system_title left">吉得堡國中升學補習班</h1>
+</div>
+<div class="btn_div">
+  <h2 class="system_title left">師資列表</h2>
+</div>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+{% endif %}
+{% endwith %}
+<div class="image"></div>
+<img class="index_pic" src="{{ url_for('static', filename='./image/teacher.png') }}"></a>
+</div>
+
+
+<div class="system_table">
+  <form method="post" action={{ url_for('teacher') }}>
+    <table cellpadding="20" border='3'>
+      <tr>
+        <th>教師編號</th>
+        <th>教師手機</th>
+        <th>教師姓名</th>
+        <th></th>
+        <th></th>
+      </tr>
+      {% for teacher_d in teacher_data %}
+      <tr>
+        <td> {{ teacher_d.教師編號 }}</td>
+        <td> {{ teacher_d.教師手機 }}</td>
+        <td> {{ teacher_d.教師姓名 }}</td>
+        <td><a href="{{ url_for('teacher_edit', pid=teacher_d.教師編號) }}"><button type="button">修改</button></a></td>
+        <td><button type="submit" value="{{teacher_d.教師姓名}}" name="teacher_delete"  onclick="return (confirm('你確定要刪除 \'{{ teacher_d.教師姓名 }}\' 嗎？'))" >刪除</button></td>
+        <td><a href="{{ url_for('teacher_state', pid=teacher_d.教師編號) }}"><button type="button">教學情況</button></a></td>
+        
+      </tr>
+      {% endfor %}
+    </table>
+      <div class="system_table">
+        <a href={{ url_for('teacher_add')}}><button value="new" name="new" type="button"> 新增資料</button></a>
+        <a href={{ url_for('course')}}><button value="new" name="new" type="button"> 查看課程資訊</button></a>
+        </div>
+      </div>
+    </form>
+
+</div>
+<div class="btn_div">
+<button><a href="{{ url_for('selection') }}">回主頁</button> 
+</div>
+{% endblock content%}

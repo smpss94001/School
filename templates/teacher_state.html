@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock head %}
+
+{% block title %}Teacher static{% endblock title%}
+
+{% block content%}
+<div class="btn_div">
+  <h1 class="system_title left">吉得堡國中升學補習班</h1>
+</div>
+<div class="btn_div">
+  <h2 class="system_title left">教學成效</h2>
+</div>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+{% endif %}
+{% endwith %}
+<div class="image"></div>
+<img class="index_pic" src="{{ url_for('static', filename='./image/kaisya_kanshi_joushi_woman.png') }}"></a>
+</div>
+
+
+<div class="system_table">
+  <form method="post" action={{ url_for('teacher_state') }}>
+    <table cellpadding="20" border='3'>
+      <tr>
+        <th>教師科目</th>
+        <th>學生會考平均成績</th>
+      </tr>
+      
+      <tr>
+        <td> {{ data_ts.科目 }}</td>
+        <td> {{ num2 }}</td>
+        <!-- 傳遞商品編號 -->
+      </tr>
+    
+    </table>
+      <div class="system_table">
+        </div>
+      </div>
+    </form>
+
+</div>
+<div class="btn_div">
+<button><a href="{{ url_for('teacher') }}">回上一頁</button> 
+</div>
+{% endblock content%}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock head %}
+
+{% block title %}Classroom{% endblock title%}
+{% block content%}
+<div class="btn_div">
+  <h1 class="system_title left">吉得堡國中升學補習班</h1>
+</div>
+<div class="btn_div">
+  <h2 class="system_title left">分校資訊</h2>
+</div>
+
+<div class="image"></div>
+<img class="index_pic" src="{{ url_for('static', filename='./image/youchienji_sakura.png') }}"></a>
+</div>
+
+
+<div class="system_table">
+    <table cellpadding="10" border='3'>
+      <tr>
+        <th>課程代號</th>
+        <th>教室代號</th>
+        <th>分部代號</th>
+        <th>分部名稱</th>
+        <th>分部地址</th>
+      </tr>
+      {% for classroom in classroom_data %}
+      <tr>
+        <td> {{ classroom.課程代號 }}</td>
+        <td> {{ classroom.教室代號 }}</td>
+        <td> {{ classroom.分部代號 }}</td>
+        <td> {{ classroom.分部名稱 }}</td>
+        <td> {{ classroom.分部地址 }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+</div>
+<div class="btn_div">
+    <button><a href="{{ url_for('course') }}">回上頁</button> 
+</div>
+{% endblock content%}

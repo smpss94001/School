@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+
+{% endblock head %}
+
+{% block title %}Student Edit{% endblock title%}
+
+{% block content%}
+
+<h1 class="system_title">吉得堡國中升學補習班</h1>
+<div class="system_table">
+  <form method="post" action={{ url_for('student_edit') }}>
+    <table cellpadding="10" border='3'>
+      <tr>
+        <th>學生學號</th>
+        <td><input type="text" value="{{ data.學生學號 }}" name="pid" readonly class="id_input"></td>
+      </tr>
+      <tr>
+        <th>學生姓名</th>
+        <td><input type="text" value="{{ data.學生姓名 }}" name="name" ></td>
+      </tr>
+      <tr>
+        <th>總分</th>
+        <td><input type="text" value="{{ data.總分 }}" name="score"></td>
+      </tr>
+      <tr>
+        <th>就讀國中</th>
+        <td><input type="text" value="{{ data.就讀國中 }}" name="junior" ></td>
+      </tr>
+      <tr>
+        <th>錄取高中</th>
+        <td><input type="text" value="{{ data.錄取高中 }}" name="senior" ></td>
+      </tr>
+      <tr>
+        <th>註冊分部</th>
+        <td><input type="text" value="{{ data.註冊分部 }}" name="branch" ></td>
+      </tr>
+    </table>
+    <div class="btn_div">
+      <button type="submit">確定修改</button> 
+      <a href="{{ url_for('student') }}"><button type="button">回上一頁</button></a>
+    </div>
+  </form>
+</div>
+
+{% endblock content%}

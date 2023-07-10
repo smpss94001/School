@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+
+{% endblock head %}
+
+{% block title %}Teacher Add{% endblock title%}
+
+{% block content%}
+
+<h1 class="system_title">吉得堡國中升學補習班</h1>
+<div class="system_table">
+  <form method="post" action={{ url_for('teacher_add') }}>
+    <table cellpadding="10" border='3'>
+      <tr>
+        <th>教師編號</th>
+         <td colspan="3">*系統自動生成*</td>
+      </tr>
+      <tr>
+        <th>教師手機</th>
+        <td><input type="text" name="phone"></td>
+      </tr>
+      <tr>
+        <th>教師姓名</th>
+        <td><input type="text" name="name"></td>
+      </tr>
+    </table>
+    <div class="btn_div">
+      <button type="submit">新增資料</button> 
+      <button><a href="{{ url_for('teacher') }}">回上一頁</button> 
+    </div>
+  </form>
+</div>
+
+{% endblock content%}

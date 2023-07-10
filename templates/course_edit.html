@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+
+{% endblock head %}
+
+{% block title %}Course Edit{% endblock title%}
+
+{% block content%}
+
+<h1 class="system_title">吉得堡國中升學補習班</h1>
+<div class="system_table">
+  <form method="post" action={{ url_for('course_edit') }}>
+    <table cellpadding="10" border='3'>
+      <tr>
+        <th>課程編號</th>
+        <td><input type="text" value="{{ data_c.課程編號 }}" name="pid" readonly class="id_input"></td>
+      </tr>
+      <tr>
+        <th>課程名稱</th>
+        <td><input type="text" value="{{ data_c.課程名稱 }}" name="name" ></td>
+      </tr>
+      <tr>
+        <th>教室編號</th>
+        <td><input type="text" value="{{ data_c.教室編號 }}" name="roomid"></td>
+      </tr>
+    </table>
+    <div class="btn_div">
+      <button type="submit">確定修改</button> 
+      <a href="{{ url_for('course') }}"><button type="button">回上一頁</button></a>
+    </div>
+  </form>
+</div>
+
+{% endblock content%}

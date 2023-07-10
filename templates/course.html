@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock head %}
+{% block title %}Course{% endblock title%}
+{% block content%}
+
+<div class="btn_div">
+  <h1 class="system_title">吉得堡國中升學補習班</h1> 
+</div>
+  <h2 class="system_title">課程資訊</h2>
+<div class="">
+  <img class="index_pic"class="cart" src="{{ url_for('static', filename='./image/classroom.png') }}">
+</div>
+<div class="system_table">
+    <form  method='post' action={{ url_for('course') }} >
+      <table cellpadding="10" border='3'>
+        <tr>
+          <th>課程編號</th>
+          <th>課程名稱</th>
+          <th>教室編號</th>
+          <th>教室名稱</th>
+          <th></th>
+          <th></th>
+        </tr>
+        {% for course in course_data %}
+        <tr>
+          <td> {{ course.課程編號 }}</td>
+          <td> {{ course.課程名稱 }}</td>
+          <td> {{ course.教室編號 }}</td>
+          <td> {{ course.教室名稱 }}</td>
+          <td><button type="submit" value="{{course.課程編號}}" name="course_edit">修改</button></td>
+          <td><button type="submit" value="{{course.課程編號}}" name="course_delete" onclick=" (confirm('你確定要刪除 \'{{ course.課程名稱 }}\' 嗎？'))">
+              刪除
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+        <div class="system_table">
+          <button><a href="{{ url_for('teacher') }}">查看授課教師</button></a>
+          <button><a href="{{ url_for('classroom') }}">查看教室位置</button></a>
+        </div>
+</div>
+<div class="btn_div">
+  <button><a href="{{ url_for('selection') }}">回主頁</button> 
+</div>
+{% endblock content%}

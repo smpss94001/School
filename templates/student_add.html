@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+
+{% endblock head %}
+
+{% block title %}Student Add{% endblock title%}
+
+{% block content%}
+
+<h1 class="system_title">吉得堡國中升學補習班</h1>
+<div class="system_table">
+  <form method="post" action={{ url_for('student_add') }}>
+    <table cellpadding="10" border='3'>
+      <tr>
+        <th>學生學號</th>
+         <td colspan="3">*系統自動生成*</td>
+      </tr>
+      <tr>
+        <th>學生名稱</th>
+        <td><input type="text" name="name" ></td>
+        <th>國文</th>
+        <td><input type="text" name="chi"></td>
+      </tr>
+      <tr>
+        <th>總分</th>
+        <td><input type="text" name="score"></td>
+        <th>英文</th>
+        <td><input type="text" name="eng"></td>
+      </tr>
+      <tr>
+        <th>就讀國中</th>
+        <td><input type="text" name="junior"></td>
+        <th>數</th>
+        <td><input type="text" name="math"></td>
+      </tr>
+      <tr>
+        <th>錄取高中</th>
+        <td><input type="text" name="senior"></td>
+        <th>社</th>
+        <td><input type="text" name="so"></td>
+      </tr>
+      <tr>
+        <th>註冊分部</th>
+        <td><input type="text" name="branch"></td>
+        <th>自</th>
+        <td><input type="text" name="sci"></td>
+      </tr>
+      <tr>
+        <th>作文</th>
+        <td><input type="text" name="com"></td>
+        <th>註冊日期</th>
+        <td>*系統自動生成*</td>
+      </tr>
+    </table>
+    <div class="btn_div">
+      <button type="submit">新增資料</button> 
+      <button><a href="{{ url_for('student') }}">回上一頁</button> 
+    </div>
+  </form>
+</div>
+
+{% endblock content%}
